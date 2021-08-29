@@ -6,9 +6,9 @@ namespace Map.Generation
     [CustomEditor(typeof(MapGenerator))]
     public class MapGeneratorEditor : Editor
     {
-        private MapGenerator map;
+        private MapGenerator _map;
 
-        private void OnEnable() => map = (MapGenerator)target;
+        private void OnEnable() => _map = (MapGenerator)target;
 
         public override void OnInspectorGUI()
         {
@@ -17,10 +17,10 @@ namespace Map.Generation
             if (Application.isPlaying)
             {
                 if (GUILayout.Button("Generate new map"))
-                    map.GenerateNewMap();
+                    _map.GenerateNewMap();
 
                 if (GUILayout.Button("Repair map"))
-                    map.TryRepair();
+                    _map.TryRepair();
             }
         }
     }

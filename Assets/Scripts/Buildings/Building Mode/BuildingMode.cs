@@ -19,10 +19,18 @@ namespace Buildings.Placement
 
         [SerializeField] private List<OptionButton> _optionButtons;
 
+        private Vector2 _clickPos;
+
         private void Awake()
         {
             _handler += CheckClickedPosition;
             _controls = _game.controls;
+        }
+
+        private void Start()
+        {
+            foreach (OptionButton optionButton in _optionButtons)
+                optionButton.Agreed += ImplementService;
         }
 
         private void OnEnable() => _controls.Player.Click.performed += _handler;
@@ -30,21 +38,35 @@ namespace Buildings.Placement
 
         private void CheckClickedPosition(InputAction.CallbackContext ctx)
         {
-            Vector2 worldPos = _controls.Player.MousePosition.ReadValue<Vector2>();
-            worldPos = Camera.main.ScreenToWorldPoint(worldPos);
+            _clickPos = _controls.Player.MousePosition.ReadValue<Vector2>();
+            _clickPos = Camera.main.ScreenToWorldPoint(_clickPos);
 
-            CellObjectType clickedCellObjectType = _buildingPlacement.CheckForCellObjectType(worldPos);
+            CellObjectType clickedCellObjectType = _buildingPlacement.CheckForCellObjectType(_clickPos);
 
             switch (clickedCellObjectType)
             {
                 case CellObjectType.Empty:
-                    _selectionMenu.Activate(worldPos, clickedCellObjectType);
+                    _selectionMenu.Activate(_clickPos, clickedCellObjectType);
                     break;
                 case CellObjectType.Obstacle:
-                    _selectionMenu.Activate(worldPos, clickedCellObjectType);
+                    _selectionMenu.Activate(_clickPos, clickedCellObjectType);
                     break;
                 case CellObjectType.Building:
-                    _selectionMenu.Activate(worldPos, clickedCellObjectType);
+                    _selectionMenu.Activate(_clickPos, clickedCellObjectType);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void ImplementService(ServiceData serviceData)
+        {
+            switch (serviceData.serviceType)
+            {
+                case ServiceType.PlaceBuilding:
+                    _buildingPlacement.Build(serviceData.entity, _clickPos);
+                    break;
+                case ServiceType.RemoveObstacle:
                     break;
                 default:
                     break;

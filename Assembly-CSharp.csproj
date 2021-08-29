@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{E75862F2-AF78-324C-C686-11D933EEFA30}</ProjectGuid>
+    <ProjectGuid>{947CD28E-9912-DFE5-94B0-670F255B3CB1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -68,7 +68,7 @@
     <Compile Include="Assets\Scripts\Game\Controls.cs" />
     <Compile Include="Assets\Scripts\Map Generation\MapGenerator.cs" />
     <Compile Include="Assets\Scripts\Map Generation\Map.cs" />
-    <Compile Include="Assets\Scripts\Buildings\Services\Service.cs" />
+    <Compile Include="Assets\Scripts\Buildings\Services\ServiceData.cs" />
     <Compile Include="Assets\Scripts\Buildings\Building Mode\Projection.cs" />
     <Compile Include="Assets\Scripts\Buildings\Building Mode\BuildingMode.cs" />
     <Compile Include="Assets\Scripts\UI\OptionButton.cs" />
@@ -78,6 +78,7 @@
     <Compile Include="Assets\Scripts\UI\Options.cs" />
     <Compile Include="Assets\Scripts\Map Generation\Direction.cs" />
     <Compile Include="Assets\Scripts\Game\Game.cs" />
+    <Compile Include="Assets\Scripts\Buildings\Services\Service.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
