@@ -12,8 +12,11 @@ namespace Buildings.Placement
 
         public void Build(GameObject building, Vector2 position)
         {
-            _mapVisualizer.ReplaceIndicator(position, building);
-            _gridVisualizer.ReplaceGridCell(_mapGenerator.grid, position, CellObjectType.Building);
+            Cell cell = _mapGenerator.grid.GetCell(position);
+            Vector2 cellPos = new Vector2(cell.X, cell.Y);
+
+            _mapVisualizer.ReplaceIndicator(cellPos, building);
+            _gridVisualizer.ReplaceGridCell(_mapGenerator.grid, cellPos, CellObjectType.Building);
         }
 
         public bool CheckForEmptiness(Vector2 position)

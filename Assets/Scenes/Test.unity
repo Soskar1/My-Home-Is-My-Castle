@@ -2453,6 +2453,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1240657153}
   - component: {fileID: 1240657154}
+  - component: {fileID: 1240657155}
   m_Layer: 5
   m_Name: Volcano Button
   m_TagString: Untagged
@@ -2494,12 +2495,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac58f8a00d4e3084ca029f249819ce1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 1746013151}
-  _service: {fileID: 11400000, guid: 3b9d701f1a9b70841a0b0aabb264fda2, type: 2}
+  _selectionMenu: {fileID: 2049094333}
+  _service: {fileID: 1240657155}
   _visual: {fileID: 1702344568}
   _agree: {fileID: 21300000, guid: cb70966bf37cdcd4183a06a084b3af69, type: 3}
   _defaultVisual: {fileID: 21300000, guid: 3617cb43ad3cde9468829764c8bd30fb, type: 3}
   _button: {fileID: 674994422}
+--- !u!114 &1240657155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1240657152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dc4af3aa31ef9145b50827c2e14335b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 1746013151}
+  serviceType: 0
+  _logCost: 0
+  _rockCost: 10
+  _building: {fileID: 4830678466588670379, guid: b0afccc954566284e8a02175e1c0115a, type: 3}
 --- !u!1 &1269957246
 GameObject:
   m_ObjectHideFlags: 0
@@ -2686,6 +2704,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1376337618}
   - component: {fileID: 1376337619}
+  - component: {fileID: 1376337620}
   m_Layer: 5
   m_Name: Archery Button
   m_TagString: Untagged
@@ -2727,12 +2746,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac58f8a00d4e3084ca029f249819ce1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 1746013151}
-  _service: {fileID: 11400000, guid: 71757920be4023149af20bd492ab09d3, type: 2}
+  _selectionMenu: {fileID: 2049094333}
+  _service: {fileID: 1376337620}
   _visual: {fileID: 95551846}
   _agree: {fileID: 21300000, guid: cb70966bf37cdcd4183a06a084b3af69, type: 3}
   _defaultVisual: {fileID: 21300000, guid: 99608ec13afb1524a9d5f691ae4616b1, type: 3}
   _button: {fileID: 2073229974}
+--- !u!114 &1376337620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376337617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dc4af3aa31ef9145b50827c2e14335b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 1746013151}
+  serviceType: 0
+  _logCost: 7
+  _rockCost: 0
+  _building: {fileID: 4830678466588670379, guid: 6f016ccfa4c85da47b734f313c33811b, type: 3}
 --- !u!1 &1410979509
 GameObject:
   m_ObjectHideFlags: 0
@@ -3050,6 +3086,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1549650993}
   - component: {fileID: 1549650994}
+  - component: {fileID: 1549650995}
   m_Layer: 5
   m_Name: Magic Button
   m_TagString: Untagged
@@ -3091,12 +3128,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac58f8a00d4e3084ca029f249819ce1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 1746013151}
-  _service: {fileID: 11400000, guid: b0300cdcf0f5a1b428fd88339175f59a, type: 2}
+  _selectionMenu: {fileID: 2049094333}
+  _service: {fileID: 1549650995}
   _visual: {fileID: 462798230}
   _agree: {fileID: 21300000, guid: cb70966bf37cdcd4183a06a084b3af69, type: 3}
   _defaultVisual: {fileID: 21300000, guid: efd5c5223d5da9e4da76dc039329bf28, type: 3}
   _button: {fileID: 1574130257}
+--- !u!114 &1549650995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549650992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dc4af3aa31ef9145b50827c2e14335b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 1746013151}
+  serviceType: 0
+  _logCost: 3
+  _rockCost: 7
+  _building: {fileID: 4830678466588670379, guid: 93a99fd01b83d094182c6ef9c273a93a, type: 3}
 --- !u!1 &1574130255
 GameObject:
   m_ObjectHideFlags: 0
@@ -3991,6 +4045,10 @@ MonoBehaviour:
   _game: {fileID: 1746013154}
   _selectionMenu: {fileID: 2049094333}
   _buildingPlacement: {fileID: 1790544413}
+  _optionButtons:
+  - {fileID: 1376337619}
+  - {fileID: 1240657154}
+  - {fileID: 1549650994}
 --- !u!4 &1790544412
 Transform:
   m_ObjectHideFlags: 0

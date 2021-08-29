@@ -3,16 +3,14 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using Buildings.Services;
-using Buildings.Resources;
-using Main.Information;
 
 namespace Buildings.Placement
 {
     public class OptionButton : MonoBehaviour
     {
-        [SerializeField] private GameData _data;
+        [SerializeField] private SelectionMenu _selectionMenu;
         [SerializeField] private Service _service;
-        public Action Agreed;
+        public Action<ServiceData> Agreed;
 
         private UnityAction _action;
 
@@ -22,6 +20,7 @@ namespace Buildings.Placement
         [SerializeField] private Button _button;
 
         private bool _canAgree;
+        private bool _needToAgree = true;
 
         private void Awake()
         {
@@ -29,61 +28,47 @@ namespace Buildings.Placement
             _button.onClick.AddListener(_action);
         }
 
-        private void OnEnable() => _canAgree = CheckBuyingOpportunity();
+        private void OnEnable() => _canAgree = _service.CheckBuyingOpportunity();
         private void OnDisable() => ButtonReset();
 
         private void SetButtonVisual(Sprite visual) => _visual.sprite = visual;
 
         private void NeedToAgree()
         {
-            _button.onClick.RemoveListener(_action);
-            _action -= NeedToAgree;
-            _action += Agree;
-            _button.onClick.AddListener(_action);
+            if (_needToAgree)
+            {
+                _button.onClick.RemoveListener(_action);
+                _action -= NeedToAgree;
+                _action += Agree;
+                _button.onClick.AddListener(_action);
 
-            SetButtonVisual(_agree);
+                SetButtonVisual(_agree);
 
-            _button.interactable = _canAgree;
+                _button.interactable = _canAgree;
+                _needToAgree = false;
+            }
         }
 
         private void Agree()
         {
-            Agreed?.Invoke();
-            ButtonReset();
+            Agreed?.Invoke(_service.GetServiceData());
+            _selectionMenu.Close();
         }
 
         public void ButtonReset()
         {
-            _button.onClick.RemoveListener(_action);
-            _action += NeedToAgree;
-            _action -= Agree;
-            _button.onClick.AddListener(_action);
-
-            SetButtonVisual(_defaultVisual);
-
-            _button.interactable = true;
-        }
-
-        private bool CheckBuyingOpportunity()
-        {
-            Resource resource = _data.ReturnResource(ResourceType.Log);
-
-            if (CostCheck(_service.logCost, resource.Quantity))
+            if (!_needToAgree)
             {
-                resource = _data.ReturnResource(ResourceType.Rock);
-                if (CostCheck(_service.rockCost, resource.Quantity))
-                    return true;
+                _button.onClick.RemoveListener(_action);
+                _action += NeedToAgree;
+                _action -= Agree;
+                _button.onClick.AddListener(_action);
+
+                SetButtonVisual(_defaultVisual);
+
+                _button.interactable = true;
+                _needToAgree = true;
             }
-
-            return false;
-        }
-
-        private bool CostCheck(int cost, int resourceCount)
-        {
-            if (resourceCount >= cost)
-                return true;
-
-            return false;
         }
     }
 }

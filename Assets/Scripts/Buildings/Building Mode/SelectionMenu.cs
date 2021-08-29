@@ -80,5 +80,13 @@ namespace Buildings.Placement
             if (_optionsForEachTileType.TryGetValue(cellObjectType, out GameObject option))
                 option.SetActive(true);
         }
+
+        public void Close()
+        {
+            gameObject.SetActive(false);
+            _emptyTileOptions.SetActive(false);
+            _buildingTileOptions.SetActive(false);
+            _obstacleTileOptions.SetActive(false);
+        }
     }
 }

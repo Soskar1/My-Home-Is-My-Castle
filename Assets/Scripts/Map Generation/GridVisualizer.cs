@@ -12,13 +12,15 @@ namespace Map.Grid
 
         private Dictionary<Vector2, GameObject> _gridCells = new Dictionary<Vector2, GameObject>();
 
+        private Vector2 _additionalPosition = new Vector2(.5f, .5f);
+
         public void VisualizeGrid(MapGrid grid)
         {
             int area = grid.Width * grid.Length;
 
             for (int index = 0; index < area; index++)
             {
-                Vector2 position = grid.CalculateCoordinatesFromIndex(index) + new Vector2(0.5f, 0.5f);
+                Vector2 position = grid.CalculateCoordinatesFromIndex(index);
 
                 Cell cell = grid.GetCell(position);
                 SpawnGridCell(position, cell.ObjectType);
@@ -46,10 +48,12 @@ namespace Map.Grid
         private void SpawnGridCell(Vector2 coordinates, CellObjectType cellType)
         {
             GameObject gridInstance = null;
+            var placementPosition = coordinates + _additionalPosition;
+
             if (cellType != CellObjectType.Empty)
-                gridInstance = Instantiate(_filed, coordinates, Quaternion.identity);
+                gridInstance = Instantiate(_filed, placementPosition, Quaternion.identity);
             else
-                gridInstance = Instantiate(_empty, coordinates, Quaternion.identity);
+                gridInstance = Instantiate(_empty, placementPosition, Quaternion.identity);
 
             gridInstance.transform.parent = _parent;
             _gridCells.Add(coordinates, gridInstance);
