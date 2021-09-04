@@ -8,50 +8,29 @@ namespace Buildings.Services
     {
         [SerializeField] private GameData _data;
 
-        public ServiceType serviceType;
-        [SerializeField] private int _logCost;
-        [SerializeField] private int _rockCost;
+        public ServiceData serviceData;
 
-        [SerializeField] private GameObject _building;
+        private Resource _logs;
+        private Resource _rocks;
 
-        public ServiceData GetServiceData()
+        public void WriteOffTheCost()
         {
-            switch (serviceType)
-            {
-                case ServiceType.PlaceBuilding:
-                    return new ServiceData
-                    {
-                        logCost = _logCost,
-                        rockCost = _rockCost,
-                        serviceType = ServiceType.PlaceBuilding,
-                        entity = _building
-                    };
-                case ServiceType.RemoveObstacle:
-                    return new ServiceData
-                    {
-                        logCost = _logCost,
-                        rockCost = _rockCost,
-                        serviceType = ServiceType.RemoveObstacle
-                    };
-                default:
-                    break;
-            }
-
-            return new ServiceData();
+            _logs.Quantity -= serviceData.logCost;
+            _rocks.Quantity -= serviceData.rockCost;
         }
 
         public bool CheckBuyingOpportunity()
         {
-            Resource resource = _data.ReturnResource(ResourceType.Log);
+            if (_logs == null || _rocks == null)
+                SetResources();
 
-            if (CostCheck(_logCost, resource.Quantity))
-            {
-                resource = _data.ReturnResource(ResourceType.Rock);
-                if (CostCheck(_rockCost, resource.Quantity))
-                    return true;
-            }
+            if (!CostCheck(serviceData.logCost, _logs.Quantity))
+                return false;
 
-            return false;
+            if (!CostCheck(serviceData.rockCost, _rocks.Quantity))
+                return false;
+
+            return true;
         }
 
         private bool CostCheck(int cost, int resourceCount)
@@ -60,6 +39,12 @@ namespace Buildings.Services
                 return true;
 
             return false;
+        }
+
+        private void SetResources()
+        {
+            _logs = _data.ReturnResource(ResourceType.Log);
+            _rocks = _data.ReturnResource(ResourceType.Rock);
         }
     }
 

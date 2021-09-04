@@ -17,7 +17,7 @@ namespace Buildings.Placement
         private Controls _controls;
         private Action<InputAction.CallbackContext> _handler;
 
-        [SerializeField] private List<OptionButton> _optionButtons;
+        [SerializeField] private List<Option> _optionButtons;
 
         private Vector2 _clickPos;
 
@@ -29,7 +29,7 @@ namespace Buildings.Placement
 
         private void Start()
         {
-            foreach (OptionButton optionButton in _optionButtons)
+            foreach (Option optionButton in _optionButtons)
                 optionButton.Agreed += ImplementService;
         }
 

@@ -27,8 +27,7 @@ namespace Buildings.Placement
         private Vector2 _additionalPosition = new Vector2(.5f, .5f);
 
         [Header("Projection")]
-        [SerializeField] private Projection _projection;
-        [HideInInspector] public Projection projectionInstance;
+        [SerializeField] private ProjectionDisplay _projectionDisplay;
 
         [Header("UI")]
         [SerializeField] private GameObject _finishButton;
@@ -40,8 +39,6 @@ namespace Buildings.Placement
             _optionsForEachTileType.Add(CellObjectType.Empty, _emptyTileOptions);
             _optionsForEachTileType.Add(CellObjectType.Obstacle, _obstacleTileOptions);
             _optionsForEachTileType.Add(CellObjectType.Building, _buildingTileOptions);
-
-            projectionInstance = Instantiate(_projection, transform.position, Quaternion.identity);
         }
 
         private void OnEnable()
@@ -59,8 +56,6 @@ namespace Buildings.Placement
 
             if (_currentTile != null)
                 Destroy(_currentTile);
-
-            projectionInstance.SetVisual(null);
         }
 
         public void Activate(Vector2 position, CellObjectType cellObjectType)
@@ -70,7 +65,8 @@ namespace Buildings.Placement
 
             gameObject.SetActive(true);
             transform.position = menuPosition;
-            projectionInstance.transform.position = menuPosition;
+            //projectionInstance.transform.position = menuPosition;
+            _projectionDisplay.projection.transform.position = menuPosition;
 
             if (cellObjectType != CellObjectType.Empty)
                 _currentTile = Instantiate(_filledTile, menuPosition, Quaternion.identity);

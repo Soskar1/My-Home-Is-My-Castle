@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1079302c21a6717409aed92a350a39d8, type: 3}
+  m_Name: Magic
+  m_EditorClassIdentifier: 
+  logCost: 5
+  rockCost: 5
+  visual: {fileID: 21300000, guid: 7f9593c8156f17144a36f2c64b77a015, type: 3}
+  building: {fileID: 4830678466588670379, guid: 93a99fd01b83d094182c6ef9c273a93a, type: 3}

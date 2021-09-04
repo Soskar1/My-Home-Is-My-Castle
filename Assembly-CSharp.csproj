@@ -66,19 +66,23 @@
     <Compile Include="Assets\Scripts\Game\GameData.cs" />
     <Compile Include="Assets\Scripts\UI\GameDataDisplay.cs" />
     <Compile Include="Assets\Scripts\Game\Controls.cs" />
+    <Compile Include="Assets\Scripts\Buildings\Building.cs" />
     <Compile Include="Assets\Scripts\Map Generation\MapGenerator.cs" />
     <Compile Include="Assets\Scripts\Map Generation\Map.cs" />
     <Compile Include="Assets\Scripts\Buildings\Services\ServiceData.cs" />
     <Compile Include="Assets\Scripts\Buildings\Building Mode\Projection.cs" />
     <Compile Include="Assets\Scripts\Buildings\Building Mode\BuildingMode.cs" />
-    <Compile Include="Assets\Scripts\UI\OptionButton.cs" />
+    <Compile Include="Assets\Scripts\Buildings\Building Mode\Option.cs" />
     <Compile Include="Assets\Scripts\Map Generation\Cell.cs" />
     <Compile Include="Assets\Scripts\Map Generation\MapData.cs" />
     <Compile Include="Assets\Scripts\Buildings\Extraction.cs" />
-    <Compile Include="Assets\Scripts\UI\Options.cs" />
+    <Compile Include="Assets\Scripts\Buildings\Services\Service.cs" />
+    <Compile Include="Assets\Tooltip.cs" />
+    <Compile Include="Assets\Scripts\UI\ProjectionDisplay.cs" />
     <Compile Include="Assets\Scripts\Map Generation\Direction.cs" />
     <Compile Include="Assets\Scripts\Game\Game.cs" />
-    <Compile Include="Assets\Scripts\Buildings\Services\Service.cs" />
+    <Compile Include="Assets\Scripts\Buildings\Services\PlaceBuildingService.cs" />
+    <Compile Include="Assets\Scripts\Buildings\Services\RemoveObstacleService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
