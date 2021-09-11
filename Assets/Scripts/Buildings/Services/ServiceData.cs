@@ -8,5 +8,6 @@ namespace Buildings.Services
         public ServiceType serviceType;
         public int logCost;
         public int rockCost;
+        public int coinCost;
     }
 }

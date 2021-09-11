@@ -12,6 +12,7 @@ namespace Buildings.Services
 
         private Resource _logs;
         private Resource _rocks;
+        private Resource _coins;
 
         public void WriteOffTheCost()
         {
@@ -21,13 +22,16 @@ namespace Buildings.Services
 
         public bool CheckBuyingOpportunity()
         {
-            if (_logs == null || _rocks == null)
+            if (_logs == null || _rocks == null || _coins == null)
                 SetResources();
 
             if (!CostCheck(serviceData.logCost, _logs.Quantity))
                 return false;
 
             if (!CostCheck(serviceData.rockCost, _rocks.Quantity))
+                return false;
+
+            if (!CostCheck(serviceData.coinCost, _coins.Quantity))
                 return false;
 
             return true;
@@ -45,6 +49,7 @@ namespace Buildings.Services
         {
             _logs = _data.ReturnResource(ResourceType.Log);
             _rocks = _data.ReturnResource(ResourceType.Rock);
+            _coins = _data.ReturnResource(ResourceType.Coin);
         }
     }
 

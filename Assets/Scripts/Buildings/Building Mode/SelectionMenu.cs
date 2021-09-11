@@ -65,7 +65,6 @@ namespace Buildings.Placement
 
             gameObject.SetActive(true);
             transform.position = menuPosition;
-            //projectionInstance.transform.position = menuPosition;
             _projectionDisplay.projection.transform.position = menuPosition;
 
             if (cellObjectType != CellObjectType.Empty)

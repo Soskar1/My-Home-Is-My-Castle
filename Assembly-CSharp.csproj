@@ -53,7 +53,7 @@
     <UnityVersion>2020.3.15f2</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Buildings\Building Mode\BuildingPlacement.cs" />
+    <Compile Include="Assets\Scripts\Buildings\Building Mode\MapObjectReplacement.cs" />
     <Compile Include="Assets\Scripts\Buildings\Building Mode\SelectionMenu.cs" />
     <Compile Include="Assets\Scripts\Map Generation\Astar\Astar.cs" />
     <Compile Include="Assets\Scripts\Map Generation\KnightPiece.cs" />
@@ -61,6 +61,7 @@
     <Compile Include="Assets\Scripts\Map Generation\CandidateMap.cs" />
     <Compile Include="Assets\Scripts\Map Generation\GridVisualizer.cs" />
     <Compile Include="Assets\Scripts\Map Generation\MapGrid.cs" />
+    <Compile Include="Assets\Scripts\Buildings\Services\PlaceBuildingService.cs" />
     <Compile Include="Assets\Scripts\Map Generation\Astar\VertexPosition.cs" />
     <Compile Include="Assets\Scripts\Resource.cs" />
     <Compile Include="Assets\Scripts\Game\GameData.cs" />
@@ -74,15 +75,16 @@
     <Compile Include="Assets\Scripts\Buildings\Building Mode\BuildingMode.cs" />
     <Compile Include="Assets\Scripts\Buildings\Building Mode\Option.cs" />
     <Compile Include="Assets\Scripts\Map Generation\Cell.cs" />
+    <Compile Include="Assets\Scripts\Buildings\Services\RemoveObstacleService.cs" />
     <Compile Include="Assets\Scripts\Map Generation\MapData.cs" />
     <Compile Include="Assets\Scripts\Buildings\Extraction.cs" />
     <Compile Include="Assets\Scripts\Buildings\Services\Service.cs" />
-    <Compile Include="Assets\Tooltip.cs" />
+    <Compile Include="Assets\Scripts\UI\Tooltip.cs" />
     <Compile Include="Assets\Scripts\UI\ProjectionDisplay.cs" />
     <Compile Include="Assets\Scripts\Map Generation\Direction.cs" />
     <Compile Include="Assets\Scripts\Game\Game.cs" />
-    <Compile Include="Assets\Scripts\Buildings\Services\PlaceBuildingService.cs" />
-    <Compile Include="Assets\Scripts\Buildings\Services\RemoveObstacleService.cs" />
+    <Compile Include="Assets\Scripts\UI\TooltipDisplay.cs" />
+    <Compile Include="Assets\Scripts\CameraExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

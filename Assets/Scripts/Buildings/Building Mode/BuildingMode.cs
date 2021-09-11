@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using Main;
 using Map.Grid;
 using Buildings.Services;
+using Map;
 
 namespace Buildings.Placement
 {
@@ -12,7 +13,7 @@ namespace Buildings.Placement
     {
         [SerializeField] private Game _game;
         [SerializeField] private SelectionMenu _selectionMenu;
-        [SerializeField] private BuildingPlacement _buildingPlacement;
+        [SerializeField] private MapObjectReplacement _mapObjectReplacement;
 
         private Controls _controls;
         private Action<InputAction.CallbackContext> _handler;
@@ -41,7 +42,7 @@ namespace Buildings.Placement
             _clickPos = _controls.Player.MousePosition.ReadValue<Vector2>();
             _clickPos = Camera.main.ScreenToWorldPoint(_clickPos);
 
-            CellObjectType clickedCellObjectType = _buildingPlacement.CheckForCellObjectType(_clickPos);
+            CellObjectType clickedCellObjectType = _mapObjectReplacement.CheckForCellObjectType(_clickPos);
 
             switch (clickedCellObjectType)
             {
@@ -64,9 +65,10 @@ namespace Buildings.Placement
             switch (serviceData.serviceType)
             {
                 case ServiceType.PlaceBuilding:
-                    _buildingPlacement.Build(serviceData.entity, _clickPos);
+                    _mapObjectReplacement.Replace(serviceData.entity, _clickPos, CellObjectType.Building);
                     break;
                 case ServiceType.RemoveObstacle:
+                    _mapObjectReplacement.Replace(serviceData.entity, _clickPos, CellObjectType.Empty);
                     break;
                 default:
                     break;

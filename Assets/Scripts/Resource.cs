@@ -45,6 +45,7 @@ namespace Buildings.Resources
     public enum ResourceType
     {
         Log,
-        Rock
+        Rock,
+        Coin
     }
 }
