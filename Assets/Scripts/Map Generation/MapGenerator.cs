@@ -7,7 +7,7 @@ namespace Map.Generation
     {
         [SerializeField] private GridVisualizer _gridVisualizer;
         [SerializeField] private MapVisualizer _mapVisualizer;
-        [SerializeField] private CandidateMap _map;
+        private CandidateMap _map;
 
         [SerializeField] private Direction _startEdge;
         [SerializeField] private Direction _exitEgde;
@@ -24,6 +24,7 @@ namespace Map.Generation
         [SerializeField] private int _length;
 
         public MapGrid grid;
+        public MapData data;
 
         private void Start() => GenerateNewMap();
 
@@ -40,6 +41,8 @@ namespace Map.Generation
             _map.CreateMap(_startPosition, _exitPosition, _autoRepair);
             _mapVisualizer.VisualizeMap(grid, _map.ReturnMapData());
             _gridVisualizer.VisualizeGrid(grid);
+
+            data = _map.ReturnMapData();
         }
 
         public void TryRepair()
